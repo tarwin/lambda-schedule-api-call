@@ -5,7 +5,7 @@ import {
 import crypto from 'crypto'
 import dayjs from 'dayjs'
 
-const secretClient = new SecretsManagerClient({ region: 'us-east-1' })
+const secretClient = new SecretsManagerClient({ region: 'us-west-1' })
 
 export const handler = async(event:any) => {
 
