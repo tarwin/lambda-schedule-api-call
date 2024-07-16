@@ -1,0 +1,30 @@
+{
+  "name": "schedule-api-call",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "pack": "pack-to-zip",
+    "build": "tsc",
+    "deploy": "npm run build && npm run pack && npm run upload",
+    "upload": "aws lambda update-function-code --profile madronus --region us-west-1 --function-name schedule-api-call --zip-file fileb://./schedule-api-call-$(cat package.json | jq -r .version).zip"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.363.0",
+    "dayjs": "^1.11.11"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "pack-to-zip": "^1.0.0"
+  },
+  "files": [
+    "./dist/**/*"
+  ],
+  "bundleDependencies": [
+    "dayjs"
+  ]
+}
